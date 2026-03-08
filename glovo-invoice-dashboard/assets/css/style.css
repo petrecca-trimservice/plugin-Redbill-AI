@@ -1,0 +1,2656 @@
+/* Glovo Invoice Dashboard - Stili */
+
+/* Reset e Variabili */
+:root {
+    --gid-primary: #00A082;
+    --gid-secondary: #FFC244;
+    --gid-success: #28A745;
+    --gid-info: #17A2B8;
+    --gid-warning: #FFC107;
+    --gid-danger: #DC3545;
+    --gid-light: #F8F9FA;
+    --gid-dark: #343A40;
+    --gid-border: #DEE2E6;
+    --gid-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --gid-radius: 8px;
+}
+
+/* Wrapper Generale */
+.gid-invoice-table-wrapper,
+.gid-dashboard-wrapper {
+    max-width: 100%;
+    margin: 20px auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Filtri */
+.gid-filters {
+    background: #fff;
+    padding: 20px;
+    border-radius: var(--gid-radius);
+    box-shadow: var(--gid-shadow);
+    margin-bottom: 20px;
+}
+
+/* Filtri Attivi */
+.gid-filters-active {
+    margin-top: 15px;
+    padding: 12px 15px;
+    background: #e7f5ff;
+    border-left: 4px solid var(--gid-info);
+    border-radius: 4px;
+}
+
+.gid-filters-active strong {
+    color: var(--gid-dark);
+    margin-right: 10px;
+}
+
+.gid-filter-tag {
+    display: inline-block;
+    background: var(--gid-primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    margin-right: 8px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.gid-filters h3 {
+    margin: 0 0 15px 0;
+    color: var(--gid-dark);
+    font-size: 1.2em;
+}
+
+.gid-filter-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.gid-filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.gid-filter-group label {
+    font-weight: 600;
+    color: var(--gid-dark);
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.gid-filter-group select,
+.gid-filter-group input[type="date"],
+.gid-filter-group input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid var(--gid-border);
+    border-radius: 4px;
+    font-size: 0.95em;
+    transition: border-color 0.3s;
+}
+
+.gid-filter-group select:focus,
+.gid-filter-group input[type="date"]:focus,
+.gid-filter-group input[type="text"]:focus {
+    outline: none;
+    border-color: var(--gid-primary);
+}
+
+/* Campo filtro numero fattura - larghezza estesa */
+.gid-filter-group-wide {
+    grid-column: span 2;
+}
+
+.gid-filter-group-wide input[type="text"] {
+    width: 100%;
+    max-width: 400px;
+}
+
+.gid-filter-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Bottoni */
+.gid-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.gid-btn-primary {
+    background: var(--gid-primary);
+    color: white;
+}
+
+.gid-btn-primary:hover {
+    background: #008f74;
+}
+
+.gid-btn-secondary {
+    background: var(--gid-border);
+    color: var(--gid-dark);
+}
+
+.gid-btn-secondary:hover {
+    background: #c8cfd6;
+}
+
+.gid-btn-success {
+    background: var(--gid-success);
+    color: white;
+}
+
+.gid-btn-success:hover {
+    background: #218838;
+}
+
+.gid-btn-icon {
+    background: transparent;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.gid-btn-icon:hover {
+    transform: scale(1.2);
+}
+
+/* Loading */
+.gid-loading {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.1em;
+    color: var(--gid-primary);
+}
+
+/* Tabella */
+.gid-table-container {
+    background: #fff;
+    border-radius: var(--gid-radius);
+    box-shadow: var(--gid-shadow);
+    overflow: hidden;
+}
+
+.gid-table-responsive {
+    overflow-x: auto;
+}
+
+.gid-invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    table-layout: fixed;
+}
+
+.gid-invoice-table thead {
+    background: var(--gid-primary);
+    color: white;
+}
+
+.gid-invoice-table th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    white-space: normal;
+    word-wrap: break-word;
+    color: white !important;
+    vertical-align: top;
+}
+
+/* Larghezze specifiche per colonne tabella fatture (11 colonne) */
+.gid-invoice-table th:nth-child(1),
+.gid-invoice-table td:nth-child(1) {
+    width: 160px; /* Destinatario */
+}
+
+.gid-invoice-table th:nth-child(2),
+.gid-invoice-table td:nth-child(2) {
+    width: 160px; /* Negozio */
+}
+
+.gid-invoice-table th:nth-child(3),
+.gid-invoice-table td:nth-child(3) {
+    width: 140px; /* N. Fattura */
+}
+
+.gid-invoice-table th:nth-child(4),
+.gid-invoice-table td:nth-child(4) {
+    width: 100px; /* Data */
+}
+
+.gid-invoice-table th:nth-child(5),
+.gid-invoice-table td:nth-child(5) {
+    width: 100px; /* Periodo Da */
+}
+
+.gid-invoice-table th:nth-child(6),
+.gid-invoice-table td:nth-child(6) {
+    width: 100px; /* Periodo A */
+}
+
+.gid-invoice-table th:nth-child(7),
+.gid-invoice-table td:nth-child(7) {
+    width: 110px; /* Subtotale */
+}
+
+.gid-invoice-table th:nth-child(8),
+.gid-invoice-table td:nth-child(8) {
+    width: 120px; /* Totale Fattura */
+}
+
+.gid-invoice-table th:nth-child(9),
+.gid-invoice-table td:nth-child(9) {
+    width: 110px; /* Prodotti */
+}
+
+.gid-invoice-table th:nth-child(10),
+.gid-invoice-table td:nth-child(10) {
+    width: 120px; /* Bonifico */
+}
+
+.gid-invoice-table th:nth-child(11),
+.gid-invoice-table td:nth-child(11) {
+    width: 80px; /* Dettagli */
+    text-align: center;
+}
+
+/* Stile cella azioni/dettagli */
+.gid-actions-cell {
+    text-align: center;
+}
+
+.gid-invoice-table tbody tr {
+    border-bottom: 1px solid var(--gid-border);
+    transition: background-color 0.2s;
+}
+
+.gid-invoice-table tbody tr:hover {
+    background-color: var(--gid-light);
+}
+
+.gid-invoice-table td {
+    padding: 12px 15px;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    vertical-align: top;
+}
+
+.gid-currency {
+    text-align: right;
+    font-family: 'Courier New', monospace;
+}
+
+.gid-highlight {
+    font-weight: 600;
+    color: var(--gid-primary);
+}
+
+/* Modale */
+.gid-modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+.gid-modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: var(--gid-radius);
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.gid-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.gid-close:hover {
+    color: #000;
+}
+
+/* Dashboard - KPI Cards */
+.gid-kpi-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.gid-kpi-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: var(--gid-radius);
+    box-shadow: var(--gid-shadow);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.3s;
+}
+
+.gid-kpi-card:hover {
+    transform: translateY(-5px);
+}
+
+.gid-kpi-icon {
+    font-size: 2.5em;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--gid-light);
+}
+
+.gid-kpi-primary .gid-kpi-icon {
+    background: rgba(0, 160, 130, 0.1);
+}
+
+.gid-kpi-success .gid-kpi-icon {
+    background: rgba(40, 167, 69, 0.1);
+}
+
+.gid-kpi-info .gid-kpi-icon {
+    background: rgba(23, 162, 184, 0.1);
+}
+
+.gid-kpi-warning .gid-kpi-icon {
+    background: rgba(255, 193, 7, 0.1);
+}
+
+.gid-kpi-content {
+    flex: 1;
+}
+
+.gid-kpi-content h4 {
+    margin: 0 0 5px 0;
+    color: var(--gid-dark);
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.gid-kpi-value {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--gid-primary);
+}
+
+.gid-kpi-label {
+    font-size: 0.85em;
+    color: #6c757d;
+}
+
+/* Indicatori */
+.gid-indicators-section {
+    background: #fff;
+    padding: 20px;
+    border-radius: var(--gid-radius);
+    box-shadow: var(--gid-shadow);
+    margin-bottom: 30px;
+}
+
+.gid-indicators-section h3 {
+    margin: 0 0 20px 0;
+    color: var(--gid-dark);
+}
+
+.gid-indicators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.gid-indicators-grid-2col {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+}
+
+.gid-indicator-column-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.gid-indicator-column-right .gid-indicator-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.gid-indicator-column-right .gid-indicator-group:first-child {
+    margin-bottom: 20px;
+}
+
+.gid-indicator-group {
+    padding: 15px;
+    background: var(--gid-light);
+    border-radius: var(--gid-radius);
+}
+
+.gid-indicator-group h4 {
+    margin: 0 0 15px 0;
+    color: var(--gid-dark);
+    font-size: 1.1em;
+}
+
+.gid-indicator-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gid-border);
+}
+
+.gid-indicator-item:last-child {
+    border-bottom: none;
+}
+
+.gid-indicator-separator {
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 2px solid var(--gid-primary);
+    background: rgba(0, 160, 130, 0.05);
+}
+
+.gid-indicator-total {
+    margin-top: 5px;
+    background: var(--gid-light);
+    padding: 12px 0;
+    border-radius: 4px;
+}
+
+.gid-indicator-label {
+    color: #6c757d;
+    font-size: 0.9em;
+}
+
+.gid-indicator-value {
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+}
+
+.gid-indicator-value small {
+    font-size: 0.85em;
+    color: #6c757d;
+    margin-left: 5px;
+}
+
+.gid-positive {
+    color: var(--gid-success);
+}
+
+.gid-negative {
+    color: var(--gid-danger);
+}
+
+/* Sezione Simulazione Negozio */
+.gid-shop-simulation-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 2px solid var(--gid-primary);
+}
+
+.gid-simulation-subtitle {
+    margin: -5px 0 20px 0;
+    color: #6c757d;
+    font-size: 0.95em;
+    font-style: italic;
+}
+
+.gid-shop-simulation-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.gid-shop-simulation-box {
+    background: #fff;
+    border: 2px solid var(--gid-primary);
+    box-shadow: 0 4px 15px rgba(0, 160, 130, 0.2);
+}
+
+.gid-shop-simulation-box h4 {
+    text-align: center;
+    color: var(--gid-primary);
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--gid-primary);
+}
+
+.gid-shop-comparison-box {
+    background: #fff9e6;
+    border: 2px solid var(--gid-warning);
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+}
+
+.gid-shop-comparison-box h4 {
+    text-align: center;
+    color: var(--gid-warning);
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--gid-warning);
+}
+
+.gid-shop-result {
+    background: linear-gradient(135deg, rgba(0, 160, 130, 0.1) 0%, rgba(0, 160, 130, 0.2) 100%);
+    padding: 15px 0 !important;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 2px solid var(--gid-primary);
+}
+
+.gid-shop-result .gid-indicator-label {
+    font-size: 1.1em;
+}
+
+.gid-shop-result .gid-indicator-value {
+    font-size: 1.3em;
+}
+
+.gid-comparison-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.gid-comparison-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: #fff;
+    border-radius: 6px;
+    border-left: 4px solid var(--gid-info);
+}
+
+.gid-comparison-difference {
+    border-left-color: var(--gid-warning);
+    background: linear-gradient(90deg, #fff 0%, #fffbf0 100%);
+    padding: 15px;
+    font-size: 1.05em;
+}
+
+.gid-comparison-label {
+    font-weight: 600;
+    color: var(--gid-dark);
+}
+
+.gid-comparison-value {
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+/* Responsive per sezione simulazione */
+@media (max-width: 992px) {
+    .gid-shop-simulation-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .gid-comparison-item {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .gid-comparison-value {
+        font-size: 1em;
+    }
+}
+
+/* Grafici */
+.gid-charts-section {
+    background: #fff;
+    padding: 20px;
+    border-radius: var(--gid-radius);
+    box-shadow: var(--gid-shadow);
+    margin-bottom: 30px;
+}
+
+.gid-charts-section h3 {
+    margin: 0 0 20px 0;
+    color: var(--gid-dark);
+}
+
+.gid-charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+}
+
+.gid-chart-container {
+    padding: 15px;
+    background: var(--gid-light);
+    border-radius: var(--gid-radius);
+}
+
+.gid-chart-container h4 {
+    margin: 0 0 15px 0;
+    color: var(--gid-dark);
+}
+
+.gid-chart {
+    position: relative;
+    height: 300px;
+}
+
+/* Impatto Voci sul Fatturato */
+.gid-impact-section {
+    background: #fff;
+    padding: 25px;
+    border-radius: var(--gid-radius);
+    box-shadow: var(--gid-shadow);
+    margin-bottom: 30px;
+}
+
+.gid-impact-section h3 {
+    margin: 0 0 10px 0;
+    color: var(--gid-dark);
+    font-size: 1.4em;
+}
+
+.gid-impact-subtitle {
+    margin: 0 0 25px 0;
+    color: #6c757d;
+    font-size: 1.05em;
+}
+
+.gid-impact-subtitle strong {
+    color: var(--gid-primary);
+    font-size: 1.2em;
+}
+
+.gid-impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.gid-impact-item {
+    background: var(--gid-light);
+    padding: 18px;
+    border-radius: var(--gid-radius);
+    border-left: 4px solid var(--gid-primary);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gid-impact-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.gid-impact-item.gid-impact-cost {
+    border-left-color: var(--gid-danger);
+}
+
+.gid-impact-item.gid-impact-revenue {
+    border-left-color: var(--gid-success);
+}
+
+.gid-impact-item.gid-impact-tax {
+    border-left-color: var(--gid-warning);
+}
+
+.gid-impact-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.gid-impact-icon {
+    font-size: 1.8em;
+}
+
+.gid-impact-name {
+    font-weight: 600;
+    color: var(--gid-dark);
+    font-size: 1em;
+    flex: 1;
+}
+
+.gid-impact-values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.gid-impact-amount,
+.gid-impact-percent {
+    display: flex;
+    flex-direction: column;
+}
+
+.gid-impact-amount-label,
+.gid-impact-percent-label {
+    font-size: 0.75em;
+    color: #6c757d;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.gid-impact-amount-value {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--gid-dark);
+    font-family: 'Courier New', monospace;
+}
+
+.gid-impact-percent-value {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--gid-primary);
+}
+
+.gid-impact-bar {
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.gid-impact-bar-fill {
+    height: 100%;
+    transition: width 0.6s ease;
+    border-radius: 4px;
+}
+
+.gid-impact-bar-cost {
+    background: linear-gradient(90deg, var(--gid-danger), #ff6b6b);
+}
+
+.gid-impact-bar-revenue {
+    background: linear-gradient(90deg, var(--gid-success), #51cf66);
+}
+
+.gid-impact-bar-tax {
+    background: linear-gradient(90deg, var(--gid-warning), #ffd43b);
+}
+
+/* Riepilogo Impatto */
+.gid-impact-summary {
+    background: var(--gid-light);
+    padding: 20px;
+    border-radius: var(--gid-radius);
+    border: 1px solid var(--gid-border);
+    color: var(--gid-dark);
+}
+
+.gid-impact-summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--gid-border);
+}
+
+.gid-impact-summary-item:last-child {
+    border-bottom: none;
+}
+
+.gid-impact-summary-label {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.gid-impact-summary-value {
+    font-size: 1.2em;
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+}
+
+/* Analisi Percentuale con Istogrammi Sfumati */
+.gid-summary-section {
+    background: #fff;
+    padding: 25px;
+    border-radius: var(--gid-radius);
+    box-shadow: var(--gid-shadow);
+}
+
+.gid-summary-section h3 {
+    margin: 0 0 10px 0;
+    color: var(--gid-dark);
+    font-size: 1.4em;
+}
+
+.gid-summary-subtitle {
+    margin: 0 0 25px 0;
+    color: #6c757d;
+    font-size: 0.95em;
+}
+
+.gid-summary-grid {
+    display: grid;
+    gap: 18px;
+}
+
+.gid-percentage-bar {
+    padding: 0;
+    transition: transform 0.2s;
+}
+
+.gid-percentage-bar:hover {
+    transform: translateX(5px);
+}
+
+.gid-percentage-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.gid-percentage-name {
+    font-weight: 600;
+    color: var(--gid-dark);
+    font-size: 1em;
+}
+
+.gid-percentage-stats {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.gid-percentage-amount {
+    font-size: 0.9em;
+    color: #6c757d;
+    font-family: 'Courier New', monospace;
+}
+
+.gid-percentage-value {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--gid-primary);
+    min-width: 60px;
+    text-align: right;
+}
+
+.gid-percentage-progress {
+    height: 32px;
+    background: var(--gid-light);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.gid-percentage-fill {
+    height: 100%;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+    justify-content: flex-end;
+}
+
+/* Gradienti colorati per ogni voce */
+.gid-percentage-fill-primary {
+    background: linear-gradient(90deg, #00A082 0%, #00d4a8 100%);
+    box-shadow: 0 2px 8px rgba(0, 160, 130, 0.4);
+}
+
+.gid-percentage-fill-danger {
+    background: linear-gradient(90deg, #DC3545 0%, #ff6b7a 100%);
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.4);
+}
+
+.gid-percentage-fill-info {
+    background: linear-gradient(90deg, #17A2B8 0%, #3dd5ea 100%);
+    box-shadow: 0 2px 8px rgba(23, 162, 184, 0.4);
+}
+
+.gid-percentage-fill-warning {
+    background: linear-gradient(90deg, #FFC107 0%, #ffdb4d 100%);
+    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.4);
+}
+
+.gid-percentage-fill-secondary {
+    background: linear-gradient(90deg, #6c757d 0%, #95a0ab 100%);
+    box-shadow: 0 2px 8px rgba(108, 117, 125, 0.4);
+}
+
+.gid-percentage-fill-success {
+    background: linear-gradient(90deg, #28A745 0%, #48d164 100%);
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.4);
+}
+
+.gid-percentage-fill-purple {
+    background: linear-gradient(90deg, #6f42c1 0%, #9370db 100%);
+    box-shadow: 0 2px 8px rgba(111, 66, 193, 0.4);
+}
+
+/* Animazione al caricamento */
+@keyframes fillBar {
+    from {
+        width: 0;
+    }
+}
+
+.gid-percentage-fill {
+    animation: fillBar 1s ease-out;
+}
+
+/* Box Alert per Fatture con Alto Impatto */
+.gid-kpi-danger {
+    border-left: 4px solid var(--gid-danger);
+}
+
+.gid-kpi-danger .gid-kpi-icon {
+    background: rgba(220, 53, 69, 0.1);
+}
+
+.gid-kpi-danger .gid-kpi-value {
+    color: var(--gid-danger);
+}
+
+.gid-alert-critico {
+    animation: pulse-danger 2s infinite;
+}
+
+@keyframes pulse-danger {
+    0%, 100% {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 0 4px 16px rgba(220, 53, 69, 0.3);
+    }
+}
+
+.gid-alert-attenzione {
+    border-left: 4px solid var(--gid-warning);
+}
+
+.gid-alert-attenzione .gid-kpi-value {
+    color: var(--gid-warning);
+}
+
+/* Sezione Tabella Alto Impatto */
+.gid-high-impact-section {
+    background: #fff;
+    padding: 25px;
+    border-radius: var(--gid-radius);
+    box-shadow: var(--gid-shadow);
+    margin-bottom: 30px;
+}
+
+.gid-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.gid-section-header h3 {
+    margin: 0;
+    color: var(--gid-dark);
+    font-size: 1.4em;
+}
+
+.gid-section-header-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.gid-alert-filter {
+    padding: 8px 12px;
+    border: 1px solid var(--gid-border);
+    border-radius: 4px;
+    font-size: 0.9em;
+    background: white;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.gid-alert-filter:focus {
+    outline: none;
+    border-color: var(--gid-primary);
+}
+
+.gid-toggle-table {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.gid-toggle-icon {
+    transition: transform 0.3s;
+    display: inline-block;
+}
+
+.gid-toggle-table.active .gid-toggle-icon {
+    transform: rotate(180deg);
+}
+
+.gid-collapsible-table {
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Tabella Impatto */
+.gid-impact-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    margin-top: 15px;
+    table-layout: fixed;
+}
+
+.gid-impact-table thead {
+    background: var(--gid-primary);
+    color: white;
+}
+
+.gid-impact-table th {
+    padding: 12px 15px;
+    text-align: center;
+    font-weight: 600;
+    white-space: normal;
+    word-wrap: break-word;
+    color: white !important;
+}
+
+/* Larghezze ottimizzate per le colonne */
+.gid-impact-table th:nth-child(1),
+.gid-impact-table td:nth-child(1) {
+    width: 110px; /* Stato */
+}
+
+.gid-impact-table th:nth-child(2),
+.gid-impact-table td:nth-child(2) {
+    width: 120px; /* Numero Fattura */
+}
+
+.gid-impact-table th:nth-child(3),
+.gid-impact-table td:nth-child(3) {
+    width: 100px; /* Data */
+}
+
+.gid-impact-table th:nth-child(4),
+.gid-impact-table td:nth-child(4) {
+    width: 150px; /* Negozio */
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.gid-impact-table th:nth-child(5),
+.gid-impact-table td:nth-child(5) {
+    width: 120px; /* Destinatario */
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.gid-impact-table th:nth-child(6),
+.gid-impact-table td:nth-child(6) {
+    width: 110px; /* Totale Prodotti */
+}
+
+.gid-impact-table th:nth-child(7),
+.gid-impact-table td:nth-child(7) {
+    width: 110px; /* Impatto Glovo */
+}
+
+.gid-impact-table th:nth-child(8),
+.gid-impact-table td:nth-child(8) {
+    width: 110px; /* % Impatto */
+}
+
+.gid-impact-table th:nth-child(9),
+.gid-impact-table td:nth-child(9) {
+    width: 110px; /* Glovo + Promo */
+}
+
+.gid-impact-table th:nth-child(10),
+.gid-impact-table td:nth-child(10) {
+    width: 110px; /* % Impatto + Promo */
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.gid-impact-table tbody tr {
+    border-bottom: 1px solid var(--gid-border);
+    transition: background-color 0.2s;
+}
+
+.gid-impact-table tbody tr:hover {
+    background-color: var(--gid-light);
+}
+
+.gid-impact-table td {
+    padding: 12px 15px;
+    overflow-wrap: break-word;
+}
+
+.gid-impact-table .gid-text-right {
+    text-align: right;
+}
+
+.gid-impact-table .gid-text-bold {
+    font-weight: 600;
+}
+
+/* Righe Colorate */
+.gid-row-critico {
+    background: rgba(220, 53, 69, 0.05);
+}
+
+.gid-row-attenzione {
+    background: rgba(255, 193, 7, 0.05);
+}
+
+.gid-row-normale {
+    background: rgba(40, 167, 69, 0.05);
+}
+
+/* Badge */
+.gid-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.gid-badge-danger {
+    background: rgba(220, 53, 69, 0.1);
+    color: var(--gid-danger);
+    border: 1px solid var(--gid-danger);
+}
+
+.gid-badge-warning {
+    background: rgba(255, 193, 7, 0.1);
+    color: #d39e00;
+    border: 1px solid var(--gid-warning);
+}
+
+.gid-badge-success {
+    background: rgba(40, 167, 69, 0.1);
+    color: var(--gid-success);
+    border: 1px solid var(--gid-success);
+}
+
+/* Percentuali nella tabella */
+.gid-percentage {
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.gid-percentage-danger {
+    color: var(--gid-danger);
+    background: rgba(220, 53, 69, 0.1);
+}
+
+.gid-percentage-warning {
+    color: #d39e00;
+    background: rgba(255, 193, 7, 0.1);
+}
+
+.gid-percentage-success {
+    color: var(--gid-success);
+    background: rgba(40, 167, 69, 0.1);
+}
+
+/* Riepilogo Tabella */
+.gid-table-summary {
+    margin-top: 20px;
+    padding: 15px;
+    background: var(--gid-light);
+    border-radius: var(--gid-radius);
+    border-left: 4px solid var(--gid-primary);
+}
+
+.gid-table-summary p {
+    margin: 0;
+    color: var(--gid-dark);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gid-filter-row {
+        grid-template-columns: 1fr;
+    }
+
+    .gid-kpi-container {
+        grid-template-columns: 1fr;
+    }
+
+    .gid-indicators-grid,
+    .gid-indicators-grid-2col {
+        grid-template-columns: 1fr;
+    }
+
+    .gid-charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gid-impact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gid-impact-values {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .gid-impact-summary-item {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .gid-invoice-table {
+        font-size: 0.8em;
+    }
+
+    .gid-invoice-table th,
+    .gid-invoice-table td {
+        padding: 8px 10px;
+    }
+}
+
+/* Sezione Impatto Glovo per Negozio */
+.gid-store-impact-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.gid-store-impact-item {
+    background: #fff;
+    border: 1px solid var(--gid-border);
+    border-radius: var(--gid-radius);
+    padding: 20px;
+    transition: box-shadow 0.2s ease;
+}
+
+.gid-store-impact-item:hover {
+    box-shadow: var(--gid-shadow);
+}
+
+.gid-store-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--gid-border);
+}
+
+.gid-store-name strong {
+    font-size: 1.1em;
+    color: var(--gid-dark);
+}
+
+.gid-store-products {
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+.gid-store-impact-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.gid-store-bar-row {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.gid-store-bar-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.gid-store-bar-name {
+    font-weight: 600;
+    color: var(--gid-dark);
+}
+
+.gid-store-bar-value {
+    font-size: 0.95em;
+    color: #495057;
+}
+
+.gid-store-bar-progress {
+    width: 100%;
+    height: 25px;
+    background: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.gid-store-bar-fill {
+    height: 100%;
+    transition: width 0.6s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.85em;
+}
+
+.gid-store-bar-fill-success {
+    background: linear-gradient(90deg, var(--gid-success) 0%, #20c997 100%);
+}
+
+.gid-store-bar-fill-warning {
+    background: linear-gradient(90deg, var(--gid-warning) 0%, #ffb700 100%);
+}
+
+.gid-store-bar-fill-danger {
+    background: linear-gradient(90deg, var(--gid-danger) 0%, #c82333 100%);
+}
+
+.gid-no-data {
+    text-align: center;
+    padding: 40px;
+    color: #6c757d;
+    font-size: 1.1em;
+}
+
+@media (max-width: 768px) {
+    .gid-store-name {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .gid-store-bar-label {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .gid-store-bar-value {
+        font-size: 0.85em;
+    }
+}
+
+/* ===========================
+   Select2 Customization
+   =========================== */
+
+/* Container principale Select2 */
+.select2-container {
+    font-size: 0.95em;
+}
+
+/* Select2 - Selezione */
+.select2-container--default .select2-selection--single {
+    height: auto !important;
+    min-height: 38px;
+    max-height: 38px !important; /* Limita altezza massima */
+    padding: 8px 12px !important; /* Uguale agli altri select */
+    border: 1px solid var(--gid-border) !important;
+    border-radius: 4px !important;
+    transition: border-color 0.3s;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.select2-container--default .select2-selection--single:focus,
+.select2-container--default.select2-container--open .select2-selection--single {
+    border-color: var(--gid-primary) !important;
+    outline: none;
+}
+
+/* Freccia dropdown */
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 100% !important;
+    top: 0 !important;
+    right: 12px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    margin-top: -2px !important;
+}
+
+/* Testo selezionato */
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 1.5 !important;
+    color: var(--gid-dark);
+    padding-left: 0 !important;
+    padding-right: 20px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    white-space: nowrap !important; /* Impedisce wrapping del testo */
+    overflow: hidden !important; /* Nasconde overflow */
+    text-overflow: ellipsis !important; /* Mostra "..." per testo troncato */
+    max-width: 100% !important; /* Limita larghezza */
+}
+
+/* Placeholder */
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: #6c757d;
+    line-height: 1.5 !important;
+}
+
+/* Dropdown */
+.select2-container--default .select2-dropdown {
+    border: 1px solid var(--gid-border);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 600px !important; /* Larghezza minima dropdown - aumentata */
+    max-width: 850px !important; /* Larghezza massima dropdown - aumentata */
+}
+
+/* Campo di ricerca nel dropdown */
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    border: 1px solid var(--gid-border);
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 0.95em;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+    border-color: var(--gid-primary);
+    outline: none;
+}
+
+/* Risultati */
+.select2-container--default .select2-results__option {
+    padding: 10px 15px; /* Aumentato padding per migliore leggibilità */
+    font-size: 0.95em;
+    line-height: 1.5; /* Migliore spaziatura tra le righe */
+    white-space: normal; /* Permette al testo di andare a capo */
+    word-wrap: break-word; /* Spezza parole lunghe */
+}
+
+/* Opzione selezionata */
+.select2-container--default .select2-results__option--selected {
+    background-color: var(--gid-light);
+    color: var(--gid-dark);
+}
+
+/* Opzione in hover */
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: var(--gid-primary);
+    color: white;
+}
+
+/* Messaggio "Nessun risultato" */
+.select2-container--default .select2-results__option[aria-disabled=true] {
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Icona di clear (X) */
+.select2-container--default .select2-selection--single .select2-selection__clear {
+    color: #6c757d;
+    font-size: 1.2em;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear:hover {
+    color: var(--gid-danger);
+}
+
+/* Loading spinner */
+.select2-container--default .select2-results__option .select2-results__option--loading {
+    color: #6c757d;
+}
+
+/* Responsive Select2 */
+@media (max-width: 768px) {
+    .select2-container {
+        font-size: 0.9em;
+    }
+
+    .select2-container--default .select2-selection--single {
+        padding: 6px 10px !important; /* Padding ridotto per mobile */
+        min-height: 36px;
+    }
+
+    .select2-container--default .select2-dropdown {
+        min-width: 300px !important; /* Larghezza minore su mobile */
+        max-width: 100vw !important; /* Massimo larghezza schermo */
+    }
+
+    .select2-container--default .select2-results__option {
+        padding: 8px 12px; /* Padding adattato per mobile */
+        font-size: 0.9em;
+    }
+}
+
+/* ============================================
+   CONTROLLO PERCENTUALE SCORPORO
+   ============================================ */
+
+.gid-scorporo-control {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 2px solid var(--gid-primary);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+}
+
+.gid-scorporo-control label {
+    font-weight: 600;
+    color: var(--gid-dark);
+    font-size: 1em;
+}
+
+.gid-scorporo-input-wrapper {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 2px solid var(--gid-primary);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 160, 130, 0.15);
+}
+
+.gid-scorporo-input {
+    width: 80px;
+    padding: 10px 12px;
+    border: none;
+    font-size: 1.2em;
+    font-weight: 600;
+    text-align: center;
+    color: var(--gid-primary);
+    outline: none;
+}
+
+.gid-scorporo-input:focus {
+    background: rgba(0, 160, 130, 0.05);
+}
+
+.gid-scorporo-suffix {
+    background: var(--gid-primary);
+    color: #ffffff;
+    padding: 10px 15px;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.gid-scorporo-help {
+    color: #6c757d;
+    font-size: 0.85em;
+    flex-basis: 100%;
+    margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    .gid-scorporo-control {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .gid-scorporo-input {
+        width: 70px;
+    }
+}
+
+/* ============================================
+   LINK PDF NUMERO FATTURA
+   ============================================ */
+
+.gid-pdf-link {
+    color: var(--gid-primary);
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline;
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
+.gid-pdf-link:hover {
+    color: #008f74;
+    text-decoration: underline;
+}
+
+.gid-pdf-link::before {
+    content: '\1F4C4';
+    font-size: 0.9em;
+    margin-right: 3px;
+}
+
+/* Colonna numero fattura - forza word-wrap */
+.gid-invoice-table td:nth-child(3) {
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
+/* ============================================
+   MODALE PDF
+   ============================================ */
+
+.gid-pdf-modal {
+    z-index: 1001;
+}
+
+.gid-pdf-modal-content {
+    width: 95%;
+    max-width: 1200px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+}
+
+.gid-pdf-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background: var(--gid-primary);
+    color: white;
+}
+
+.gid-pdf-modal-header h2 {
+    margin: 0;
+    font-size: 1.3em;
+    color: white;
+}
+
+.gid-pdf-modal-header .gid-close {
+    color: white;
+    float: none;
+    font-size: 24px;
+}
+
+.gid-pdf-modal-header .gid-close:hover {
+    color: #e0e0e0;
+}
+
+.gid-pdf-modal-body {
+    flex: 1;
+    position: relative;
+    background: #f5f5f5;
+    overflow: hidden;
+}
+
+.gid-pdf-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2em;
+    color: var(--gid-primary);
+    text-align: center;
+    padding: 20px;
+}
+
+.gid-pdf-loading::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 15px;
+    border: 3px solid var(--gid-border);
+    border-top-color: var(--gid-primary);
+    border-radius: 50%;
+    animation: gid-spin 1s linear infinite;
+}
+
+@keyframes gid-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.gid-pdf-viewer {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+}
+
+.gid-pdf-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 15px 25px;
+    background: var(--gid-light);
+    border-top: 1px solid var(--gid-border);
+}
+
+/* Responsive Modale PDF */
+@media (max-width: 768px) {
+    .gid-pdf-modal-content {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        margin: 0;
+    }
+
+    .gid-pdf-modal-header {
+        padding: 12px 15px;
+    }
+
+    .gid-pdf-modal-header h2 {
+        font-size: 1.1em;
+    }
+
+    .gid-pdf-modal-footer {
+        padding: 10px 15px;
+        flex-wrap: wrap;
+    }
+
+    .gid-pdf-modal-footer .gid-btn {
+        flex: 1;
+        min-width: 120px;
+    }
+
+    /* Campo filtro su mobile */
+    .gid-filter-group-wide {
+        grid-column: span 1;
+    }
+}
+
+/* ============================================
+   MODALE DETTAGLI FATTURA
+   ============================================ */
+
+.gid-details-modal-content {
+    width: 95%;
+    max-width: 900px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+}
+
+.gid-details-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background: var(--gid-primary);
+    color: white;
+}
+
+.gid-details-modal-header h2 {
+    margin: 0;
+    font-size: 1.3em;
+    color: white;
+}
+
+.gid-details-modal-header .gid-close {
+    color: white;
+    float: none;
+    font-size: 24px;
+}
+
+.gid-details-modal-header .gid-close:hover {
+    color: #e0e0e0;
+}
+
+.gid-details-modal-body {
+    flex: 1;
+    padding: 20px 25px;
+    overflow-y: auto;
+    background: #f8f9fa;
+}
+
+/* Griglia dettagli */
+.gid-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.gid-detail-section {
+    background: white;
+    border-radius: var(--gid-radius);
+    padding: 15px 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.gid-detail-section h3 {
+    margin: 0 0 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--gid-primary);
+    color: var(--gid-dark);
+    font-size: 1em;
+}
+
+.gid-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--gid-border);
+}
+
+.gid-detail-row:last-child {
+    border-bottom: none;
+}
+
+.gid-detail-label {
+    color: #6c757d;
+    font-size: 0.9em;
+}
+
+.gid-detail-value {
+    font-weight: 600;
+    color: var(--gid-dark);
+    text-align: right;
+}
+
+.gid-detail-value.gid-currency {
+    font-family: 'Courier New', monospace;
+}
+
+.gid-detail-value.gid-negative {
+    color: var(--gid-danger);
+}
+
+.gid-detail-highlight {
+    background: rgba(0, 160, 130, 0.1);
+    margin: 5px -10px;
+    padding: 10px !important;
+    border-radius: 4px;
+}
+
+.gid-detail-highlight .gid-detail-label,
+.gid-detail-highlight .gid-detail-value {
+    font-weight: 700;
+    color: var(--gid-primary);
+}
+
+.gid-detail-bonifico {
+    background: rgba(40, 167, 69, 0.1);
+}
+
+.gid-detail-bonifico .gid-detail-label,
+.gid-detail-bonifico .gid-detail-value {
+    color: var(--gid-success);
+}
+
+/* Colori sezioni */
+.gid-detail-fees h3 {
+    border-bottom-color: var(--gid-danger);
+}
+
+.gid-detail-payment h3 {
+    border-bottom-color: var(--gid-success);
+}
+
+/* Responsive modale dettagli */
+@media (max-width: 768px) {
+    .gid-details-modal-content {
+        width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        margin: 0;
+    }
+
+    .gid-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gid-details-modal-body {
+        padding: 15px;
+    }
+
+    .gid-detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .gid-detail-value {
+        text-align: left;
+    }
+}
+
+/* ==========================================================================
+   SALES & COSTS DASHBOARD  [glovo_sales_costs_dashboard]
+   ========================================================================== */
+
+/* Titolo sezione filtri */
+.gid-scd-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 16px 0;
+    font-size: 1.25em;
+    color: var(--gid-dark);
+}
+
+.gid-scd-title-icon {
+    font-size: 1.4em;
+    line-height: 1;
+}
+
+/* Info periodo sotto il form */
+.gid-scd-filter-info {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.gid-scd-filter-info em {
+    color: #999;
+    font-style: italic;
+}
+
+/* Pulsante reset */
+.gid-filter-group--btn {
+    justify-content: flex-end;
+}
+
+/* Messaggio dati vuoti */
+.gid-scd-empty {
+    background: #fff8e1;
+    border-left: 4px solid var(--gid-warning);
+    border-radius: var(--gid-radius);
+    padding: 20px 24px;
+    margin-top: 20px;
+    color: #6d4c00;
+    font-size: 1em;
+}
+
+/* ---- KPI Cards ---- */
+.gid-scd-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.gid-scd-kpi-card {
+    background: #fff;
+    border-radius: var(--gid-radius);
+    box-shadow: var(--gid-shadow);
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-top: 4px solid var(--gid-border);
+    transition: transform 0.2s;
+}
+
+.gid-scd-kpi-card:hover {
+    transform: translateY(-2px);
+}
+
+.gid-scd-kpi-vendite   { border-top-color: var(--gid-primary); }
+.gid-scd-kpi-costi     { border-top-color: var(--gid-secondary); }
+.gid-scd-kpi-incidenza { border-top-color: var(--gid-info); }
+.gid-scd-kpi-margine   { border-top-color: var(--gid-success); }
+.gid-scd-kpi-best      { border-top-color: #6f42c1; }
+.gid-scd-kpi-worst     { border-top-color: var(--gid-danger); }
+
+.gid-scd-kpi-icon {
+    font-size: 1.8em;
+    line-height: 1;
+}
+
+.gid-scd-kpi-label {
+    font-size: 0.82em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #888;
+}
+
+.gid-scd-kpi-value {
+    font-size: 1.45em;
+    font-weight: 700;
+    color: var(--gid-dark);
+    line-height: 1.2;
+}
+
+.gid-scd-kpi-sub {
+    font-size: 0.8em;
+    color: #aaa;
+}
+
+/* ---- Colori semaforo ---- */
+.gid-scd-pos  { color: var(--gid-success) !important; }
+.gid-scd-neg  { color: var(--gid-danger)  !important; }
+.gid-scd-warn { color: var(--gid-warning) !important; }
+
+/* ---- Grafici ---- */
+.gid-scd-charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.gid-scd-chart-card {
+    background: #fff;
+    border-radius: var(--gid-radius);
+    box-shadow: var(--gid-shadow);
+    padding: 20px;
+}
+
+.gid-scd-chart-card h4 {
+    margin: 0 0 14px 0;
+    font-size: 1em;
+    color: var(--gid-dark);
+    font-weight: 600;
+    border-bottom: 2px solid var(--gid-border);
+    padding-bottom: 8px;
+}
+
+/* Il primo grafico (vendite vs costi) si estende su due colonne */
+.gid-scd-chart-wide {
+    grid-column: 1 / -1;
+}
+
+/* ---- Tabella mensile ---- */
+.gid-scd-table-card {
+    background: #fff;
+    border-radius: var(--gid-radius);
+    box-shadow: var(--gid-shadow);
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.gid-scd-table-card h4 {
+    margin: 0 0 14px 0;
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--gid-dark);
+    border-bottom: 2px solid var(--gid-border);
+    padding-bottom: 8px;
+}
+
+.gid-scd-table-wrap {
+    overflow-x: auto;
+}
+
+.gid-scd-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.93em;
+}
+
+.gid-scd-table thead th {
+    background: var(--gid-dark) !important;
+    color: #ffffff !important;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.gid-scd-table thead th:not(:first-child) {
+    text-align: right;
+}
+
+.gid-scd-table tbody tr {
+    border-bottom: 1px solid var(--gid-border);
+    transition: background 0.15s;
+}
+
+.gid-scd-table tbody tr:hover {
+    background: #f5f5f5;
+}
+
+.gid-scd-table td {
+    padding: 10px 14px;
+    vertical-align: middle;
+}
+
+.gid-scd-td-mese {
+    white-space: nowrap;
+    min-width: 130px;
+}
+
+.gid-scd-td-num {
+    text-align: right;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.gid-scd-td-pct {
+    text-align: center;
+}
+
+.gid-scd-td-delta {
+    min-width: 160px;
+    padding-left: 16px;
+}
+
+/* Badge incidenza */
+.gid-scd-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.88em;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.gid-scd-badge-ok         { background: #d4edda; color: #155724; }
+.gid-scd-badge-attenzione { background: #fff3cd; color: #856404; }
+.gid-scd-badge-critico    { background: #f8d7da; color: #721c24; }
+
+/* Delta mese precedente */
+.gid-scd-delta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.gid-scd-delta-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.gid-scd-delta-label {
+    font-size: 0.75em;
+    color: #aaa;
+    min-width: 38px;
+}
+
+.gid-scd-delta {
+    font-size: 0.82em;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.gid-scd-delta-pos     { color: var(--gid-success); }
+.gid-scd-delta-neg     { color: var(--gid-danger); }
+.gid-scd-delta-neutral { color: #aaa; }
+.gid-scd-delta-na      { color: #ccc; font-size: 0.9em; }
+
+/* Footer tabella */
+.gid-scd-tfoot td {
+    background: #f0f4f8;
+    border-top: 2px solid var(--gid-dark);
+    padding: 11px 14px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .gid-scd-kpi-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .gid-scd-charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gid-scd-chart-wide {
+        grid-column: 1;
+    }
+
+    .gid-scd-table {
+        font-size: 0.82em;
+    }
+
+    .gid-scd-td-delta {
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gid-scd-kpi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---- Intestazione sezione singole voci ---- */
+.gid-scd-section-header {
+    margin: 32px 0 16px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--gid-border);
+}
+
+.gid-scd-section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 6px 0;
+    font-size: 1.2em;
+    color: var(--gid-dark);
+}
+
+.gid-scd-section-desc {
+    margin: 0;
+    font-size: 0.88em;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* ---- KPI cards singole voci ---- */
+.gid-scd-voci-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.gid-scd-voce-card {
+    background: #fff;
+    border-radius: var(--gid-radius);
+    box-shadow: var(--gid-shadow);
+    padding: 14px 16px;
+    border-top: 4px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transition: transform 0.15s;
+}
+
+.gid-scd-voce-card:hover {
+    transform: translateY(-2px);
+}
+
+.gid-scd-voce-card.gid-scd-voce-credit {
+    background: #f6fef6;
+}
+
+.gid-scd-voce-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.gid-scd-voce-label {
+    font-size: 0.8em;
+    font-weight: 600;
+    color: #555;
+    line-height: 1.3;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.gid-scd-voce-credit-tag {
+    display: inline-block;
+    background: #d4edda;
+    color: #155724;
+    font-size: 0.75em;
+    padding: 1px 6px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.gid-scd-voce-value {
+    font-size: 1.15em;
+    font-weight: 700;
+    color: var(--gid-dark);
+}
+
+.gid-scd-voce-pct {
+    font-size: 0.75em;
+    color: #aaa;
+}
+
+/* ---- Tabella voci dettaglio ---- */
+.gid-scd-table-voci {
+    font-size: 0.82em;
+    min-width: 900px;
+}
+
+.gid-scd-table-voci thead th {
+    background: var(--gid-dark) !important;
+    color: #ffffff !important;
+    padding: 9px 10px;
+    text-align: right;
+    font-size: 0.85em;
+    line-height: 1.3;
+    white-space: normal;
+    min-width: 100px;
+}
+
+.gid-scd-table-voci thead th.gid-scd-th-mese,
+.gid-scd-table-voci thead th:first-child {
+    text-align: left;
+    min-width: 110px;
+}
+
+.gid-scd-th-credit {
+    font-size: 0.8em;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+.gid-scd-voce-td-credit {
+    color: var(--gid-success) !important;
+}
+
+.gid-scd-td-zero {
+    color: #ccc;
+    font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+    .gid-scd-voci-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ===== EXPORT SECTION ===== */
+.gid-scd-export-section {
+    background: #fff;
+    border-radius: var(--gid-radius);
+    box-shadow: var(--gid-shadow);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-left: 4px solid var(--gid-primary);
+}
+
+.gid-scd-export-info {
+    flex: 1;
+}
+
+.gid-scd-export-info .gid-scd-section-title {
+    margin-bottom: 4px;
+}
+
+.gid-scd-export-info .gid-scd-section-desc {
+    margin: 0;
+}
+
+.gid-scd-export-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .gid-scd-export-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ===== BOTTONE GEMINI ===== */
+.gid-btn-gemini {
+    background: linear-gradient(135deg, #4285F4 0%, #7C4DFF 100%);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--gid-radius);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    box-shadow: 0 2px 6px rgba(66, 133, 244, 0.35);
+}
+
+.gid-btn-gemini:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.gid-btn-gemini:active {
+    transform: translateY(0);
+}
+
+/* ===== BOTTONE INVIO EMAIL CONFRONTO ===== */
+.gid-btn-email-compare {
+    background: linear-gradient(135deg, #00A082 0%, #00796B 100%);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--gid-radius);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    box-shadow: 0 2px 6px rgba(0, 160, 130, 0.35);
+}
+
+.gid-btn-email-compare:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.gid-btn-email-compare:active {
+    transform: translateY(0);
+}
+
+.gid-btn-email-compare:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ===== MODALE GEMINI ===== */
+.gid-gemini-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.gid-gemini-modal-content {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 860px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.gid-gemini-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, #4285F4 0%, #7C4DFF 100%);
+    border-radius: 10px 10px 0 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gid-gemini-modal-header .gid-gemini-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 4px;
+    opacity: 0.85;
+    transition: opacity 0.15s;
+}
+
+.gid-gemini-modal-header .gid-gemini-close:hover {
+    opacity: 1;
+}
+
+.gid-gemini-modal-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 24px;
+    background: #f8f9fa;
+}
+
+.gid-gemini-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 14px 24px;
+    background: #fff;
+    border-top: 1px solid var(--gid-border);
+    border-radius: 0 0 10px 10px;
+}
+
+/* Spinner di caricamento */
+.gid-gemini-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    color: #555;
+    gap: 16px;
+}
+
+.gid-gemini-spinner {
+    width: 42px;
+    height: 42px;
+    border: 4px solid #e0e0e0;
+    border-top-color: #4285F4;
+    border-radius: 50%;
+    animation: gid-spin 0.9s linear infinite;
+}
+
+/* Messaggio di errore */
+.gid-gemini-error {
+    background: #fff3f3;
+    border: 1px solid #f5c6cb;
+    border-radius: var(--gid-radius);
+    padding: 16px 20px;
+    color: var(--gid-danger);
+    font-size: 14px;
+}
+
+/* ===== STILI CONTENUTO MARKDOWN ===== */
+.gid-gemini-report {
+    background: #fff;
+    border-radius: var(--gid-radius);
+    padding: 24px 28px;
+    box-shadow: var(--gid-shadow);
+    font-size: 14px;
+    line-height: 1.7;
+    color: #2c3e50;
+}
+
+.gid-gemini-report h1,
+.gid-gemini-report h2,
+.gid-gemini-report h3 {
+    color: #1a3c5e;
+    margin-top: 24px;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.gid-gemini-report h1 { font-size: 1.5em; border-bottom: 2px solid #4285F4; padding-bottom: 6px; }
+.gid-gemini-report h2 { font-size: 1.25em; border-bottom: 1px solid #dee2e6; padding-bottom: 4px; }
+.gid-gemini-report h3 { font-size: 1.1em; }
+
+.gid-gemini-report p { margin: 0 0 12px; }
+
+.gid-gemini-report ul,
+.gid-gemini-report ol {
+    padding-left: 22px;
+    margin: 0 0 12px;
+}
+
+.gid-gemini-report li { margin-bottom: 4px; }
+
+.gid-gemini-report table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13px;
+}
+
+.gid-gemini-report th,
+.gid-gemini-report td {
+    border: 1px solid #dee2e6;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.gid-gemini-report th {
+    background: #f0f4ff;
+    font-weight: 600;
+    color: #1a3c5e;
+}
+
+.gid-gemini-report tr:nth-child(even) td { background: #fafbff; }
+
+.gid-gemini-report code {
+    background: #f4f4f4;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+.gid-gemini-report blockquote {
+    border-left: 4px solid #4285F4;
+    margin: 0 0 12px;
+    padding: 8px 16px;
+    background: #f0f4ff;
+    color: #444;
+    border-radius: 0 4px 4px 0;
+}
+
+.gid-gemini-report strong { color: #1a3c5e; }
+
+@media (max-width: 768px) {
+    .gid-gemini-modal {
+        padding: 10px;
+        align-items: flex-end;
+    }
+    .gid-gemini-modal-content {
+        max-height: 95vh;
+        border-radius: 10px 10px 0 0;
+    }
+    .gid-gemini-modal-footer {
+        flex-wrap: wrap;
+    }
+}

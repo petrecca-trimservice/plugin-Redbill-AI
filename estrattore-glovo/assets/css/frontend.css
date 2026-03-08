@@ -1,0 +1,174 @@
+/**
+ * Frontend Styles - MSG Extractor
+ * Stili per interfaccia drag & drop caricamento file MSG
+ *
+ * @package MSG_Extractor
+ * @since 8.0
+ */
+
+/* Container Principale */
+.msg-pro-container {
+    max-width: 700px;
+    margin: 30px auto;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* Header */
+.msg-pro-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background: #fff;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 18px;
+    font-weight: 600;
+    color: #334155;
+}
+
+/* Body */
+.msg-pro-body {
+    padding: 25px;
+}
+
+.msg-section-title {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 8px;
+}
+
+.msg-description {
+    font-size: 14px;
+    color: #94a3b8;
+    margin: 0 0 20px 0;
+}
+
+/* Dropzone */
+.msg-dropzone {
+    border: 2px dashed #cbd5e1;
+    border-radius: 6px;
+    background-color: #f8fafc;
+    padding: 40px 20px;
+    text-align: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.msg-dropzone.drag-over {
+    background-color: #eff6ff;
+    border-color: #3b82f6;
+}
+
+.cloud-icon-wrap {
+    margin-bottom: 15px;
+}
+
+.drop-title {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #334155;
+}
+
+.drop-subtitle {
+    margin: 0 0 15px 0;
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+.select-btn {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.select-btn:hover {
+    border-color: #94a3b8;
+    background: #f1f5f9;
+}
+
+.file-status-text {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #3b82f6;
+}
+
+/* Pulsante Azione */
+.process-btn {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.process-btn:hover {
+    background: #2563eb;
+}
+
+/* Info Box (Blu) */
+.msg-info-box {
+    background-color: #eff6ff;
+    border-top: 1px solid #dbeafe;
+    padding: 15px 25px;
+    border-left: 5px solid #3b82f6;
+}
+
+.info-title {
+    color: #2563eb;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.info-row {
+    color: #1e40af;
+    font-size: 13px;
+    margin-bottom: 3px;
+}
+
+.info-row strong {
+    color: #1e3a8a;
+}
+
+/* Result Box (Verde) */
+.msg-result-box {
+    background-color: #ecfdf5;
+    border-top: 1px solid #d1fae5;
+    padding: 20px 25px;
+    border-left: 5px solid #10b981;
+}
+
+.result-header {
+    color: #059669;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.result-row {
+    color: #065f46;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.result-row.highlight strong {
+    color: #047857;
+}
