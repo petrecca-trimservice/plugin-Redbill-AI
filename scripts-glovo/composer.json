@@ -1,0 +1,8 @@
+{
+  "name": "scripts/glovo-parser",
+  "description": "Script per estrazione dati da fatture Glovo",
+  "type": "project",
+  "require": {
+    "smalot/pdfparser": "^0.18"
+  }
+}
