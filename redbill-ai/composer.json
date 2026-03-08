@@ -1,0 +1,17 @@
+{
+    "name": "trimservice/redbill-ai",
+    "description": "Redbill AI — Plugin WordPress multi-tenant SaaS per la gestione fatture Glovo",
+    "type": "wordpress-plugin",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.0",
+        "smalot/pdfparser": "^0.18"
+    },
+    "autoload": {
+        "psr-4": {}
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}

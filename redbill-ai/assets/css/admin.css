@@ -1,0 +1,179 @@
+/* ==========================================================================
+   Redbill AI — Admin CSS
+   ========================================================================== */
+
+.rbai-admin-wrap h1 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+/* Grid 2 colonne per le card admin */
+.rbai-admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+}
+
+/* Card generica */
+.rbai-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+
+.rbai-card h2 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+}
+
+.rbai-card h3 {
+    margin-top: 0;
+    font-size: 1rem;
+}
+
+/* Azioni (bottoni allineati) */
+.rbai-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+/* Tenant manager: lista tenant */
+.rbai-tenant-list {
+    margin-top: 16px;
+}
+
+.rbai-tenant-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    background: #fafafa;
+}
+
+.rbai-tenant-row:hover {
+    background: #f0f7ff;
+}
+
+.rbai-tenant-info strong {
+    display: block;
+    font-size: 0.95rem;
+}
+
+.rbai-tenant-info small {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+/* Badge status */
+.rbai-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.rbai-badge--active    { background: #d4edda; color: #155724; }
+.rbai-badge--pending   { background: #fff3cd; color: #856404; }
+.rbai-badge--suspended { background: #f8d7da; color: #721c24; }
+
+/* Panoramica stats */
+.rbai-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.rbai-stat-box {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 16px;
+    text-align: center;
+}
+
+.rbai-stat-box .rbai-stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0073aa;
+    display: block;
+}
+
+.rbai-stat-box .rbai-stat-label {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 4px;
+}
+
+/* Settings page */
+.rbai-settings-section {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+}
+
+.rbai-settings-section h2 {
+    font-size: 1rem;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+}
+
+/* Tools page */
+.rbai-tool-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 16px;
+    background: #f9fbfd;
+}
+
+/* Log output already styled inline in PHP, but add spinner */
+#rbai-log-box .rbai-spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid #ccc;
+    border-top-color: #0073aa;
+    border-radius: 50%;
+    animation: rbai-spin 0.7s linear infinite;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+@keyframes rbai-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Notice custom */
+.rbai-notice {
+    padding: 12px 16px;
+    border-left: 4px solid #0073aa;
+    background: #f0f7ff;
+    margin-bottom: 16px;
+}
+
+.rbai-notice--warning {
+    border-color: #f39c12;
+    background: #fffbe6;
+}
+
+.rbai-notice--error {
+    border-color: #dc3232;
+    background: #fdf0f0;
+}
